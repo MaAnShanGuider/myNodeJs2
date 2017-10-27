@@ -52,13 +52,14 @@
 
 	//比如浏览器输入localhost:3000\login\aaa
 	//-------------------hostname---||pathfather||pathchild
+
 	//login.js代码如下：
 		var express = require('express');
-	var router = express.Router();
-	/* GET users listing. */
+		var router = express.Router();
+		/* GET users listing. */
 	//--------get的第一个参数
-	router.get('/', function(req, res, next) { 
-	//这个get的第一个参数就是浏览器输入的pathchild,如果没有浏览器只是输入到pathfather那么就
+		router.get('/', function(req, res, next) { 
+	//这个get的第一个参数就是浏览器输入的pathchild,如果浏览器只是输入到pathfather那么就
 	//会执行这个方法
 		console.log(__dirname);
 		res.render('login',{wo:'哈哈哈'});
@@ -69,3 +70,36 @@
 	res.render('child/childhaha');
 	});
 	module.exports = router;
+
+## 接下来，加点东西进去。
+**views文件夹里的ejs文件里引入静态资源链接呢**
+	我们在public的javascripts文件夹里新增一个warning.js文件。
+
+	那么public目录形式是：
+		-public
+			+css
+			+images
+			-javascripts
+				warning.js
+			+stylesheets
+
+
+	views目录下的ejs文件怎么引入这些呢？
+		index.ejs代码：
+		<!DOCTYPE html>
+		<html>
+			<head>
+				<title><%= title %></title>
+				<link rel='stylesheet' href='/stylesheets/style.css' />
+			</head>
+			<body>
+				<%- include("./header.ejs")%>
+				<h1><%= title %></h1>
+				<p>Welcome to <%= title %></p>
+			</body>
+			<script src="/javascripts/warning.js"></script>
+		</html>
+
+**link标签里的href与script里的src的上一级目录就是public文件夹**
+**但是，include里的目录就是指向views目录**
+
