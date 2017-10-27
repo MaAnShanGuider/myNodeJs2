@@ -50,7 +50,7 @@ readme.md
 于是在第二个login.js路由里面再根据path后面的路径决定执行哪个router.get()方法。
 
 	//比如浏览器输入localhost:3000\login\aaa
-	//-------------------hostname---|pathfather\pathchild
+	//-------------------hostname---||pathfather||pathchild
 	//login.js代码如下：
 		var express = require('express');
 	var router = express.Router();
