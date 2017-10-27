@@ -10,21 +10,21 @@
 						这里的res.render(path)里的path的上一级目录是views目录
 
 ### 文件目录形式:
--bin
-	www		  //入口文件
-+node_modules //放置第三方模块
-+public 	  //静态文件
--routes
-	index.js  //一级路由，最底层的路由
-	login.js
-	user.js
--views
-	error.ejs //视图，在routes中由res.render(path,{转换规则对象})调用,
-	index.ejs //参数里的path参数的上一级为views目录。
-	login.ejs
-apps.js
-package.json
-readme.md
+	-bin
+		www		  //入口文件
+	+node_modules //放置第三方模块
+	+public 	  //静态文件
+	-routes
+		index.js  //一级路由，最底层的路由
+		login.js
+		user.js
+	-views
+		error.ejs //视图，在routes中由res.render(path,{转换规则对象})调用,
+		index.ejs //参数里的path参数的上一级为views目录。
+		login.ejs
+	apps.js
+	package.json
+	readme.md
 
 	//来来，一个典型的routes目录下的login.js文件如下
 	var express = require('express');
