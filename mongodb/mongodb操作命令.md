@@ -145,3 +145,18 @@ MongoDB 使用 update() 和 save() 方法来更新集合中的文档。接下来
 ######关于操作符
 1. $set:用来指定一个键的值。如果这个键不存在，则创建它。
 2. $unset:从文档中移除指定的键。
+
+
+###删除文档
+如删除集合下全部文档：
+
+>db.inventory.deleteMany({})
+
+删除 status 等于 A 的全部文档：
+
+>db.inventory.deleteMany({ status : "A" })
+
+删除 status 等于 D 的一个文档：
+
+>db.inventory.deleteOne( { status: "D" } )
+
