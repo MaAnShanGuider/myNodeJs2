@@ -53,14 +53,14 @@ mongo 是一个交互式的js shell，提供了一个强大的js 环境，为DBA
 	 use foo
 
 
-####创建数据库
+#### 创建数据库
 	use databaseName    # databaseName 为 创建的数据库的名称
 
 	eg:  
 		>use tianmao
 		switched to db tianmao
 
-####删除数据库
+#### 删除数据库
 	db.dropDatabase()
 
 	>use tianmao
@@ -68,7 +68,7 @@ mongo 是一个交互式的js shell，提供了一个强大的js 环境，为DBA
 	>db.dropDatabase()
 	 { "dropped" : "runoob", "ok" : 1 }
 
-####删除集合
+#### 删除集合
 	db.collection.drop()   #collection 为 表名
 
 	>use tianmao
@@ -77,7 +77,7 @@ mongo 是一个交互式的js shell，提供了一个强大的js 环境，为DBA
 	 true
 	>show tables 
 
-####插入文档
+#### 插入文档
 MongoDB 使用 insert() 或 save() 方法向集合中插入文档，语法如下:
 
 	db.tableName.insert(document)  #document一般是对象格式
@@ -94,10 +94,10 @@ MongoDB 使用 insert() 或 save() 方法向集合中插入文档，语法如下
 banner是集合名，如果不存在，那么会自动创建这个集合并插入文档。
 插入文档你也可以使用 db.col.save(document) 命令。如果不指定_id字段save()方法类似于 insert()方法。如果指定_id字段，则会更新该_id的数据。
 
-####更新文档
+#### 更新文档
 MongoDB 使用 update() 和 save() 方法来更新集合中的文档。接下来让我们详细来看下两个函数的应用及其区别
 	
-#####update()方法
+##### update()方法
 	db.collection.update(
 	   <query>,
 	   <update>,
@@ -142,21 +142,39 @@ MongoDB 使用 update() 和 save() 方法来更新集合中的文档。接下来
 		{'title':'天猫首页'}，{$set:{'title':'京东首页'}}
 		)
 **如果<update>参数里不设置操作符($set,$inc),那么query匹配到的记录会整个被替换成updata.**
-######关于操作符
+###### 关于操作符
 1. $set:用来指定一个键的值。如果这个键不存在，则创建它。
 2. $unset:从文档中移除指定的键。
 
 
-###删除文档
-如删除集合下全部文档：
+### 删除文档
+语法：
 
->db.inventory.deleteMany({})
+		db.collection.remove(
+		   <query>,
+		   {
+		     justOne: <boolean>,
+		     writeConcern: <document>
+		   }
+		)
+删除文档:
+>db.collection.remove({status:'A'})
+
+
+- query :（可选）删除的文档的条件。
+- justOne : （可选）如果设为 true 或 1，则只删除一个文档。
+- writeConcern :（可选）抛出异常的级别。
+
+
+**3.2版本以后的删除**
+如删除集合下全部文档：
+>db.collection.deleteMany({})
 
 删除 status 等于 A 的全部文档：
 
->db.inventory.deleteMany({ status : "A" })
+>db.collection.deleteMany({ status : "A" })
 
 删除 status 等于 D 的一个文档：
 
->db.inventory.deleteOne( { status: "D" } )
+>db.collection.deleteOne( { status: "D" } )
 

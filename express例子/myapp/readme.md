@@ -1,4 +1,18 @@
 ## express 框架
+
+### 安装express框架
+
+1. 安装环境
+		(1) npm install -g express（ web应用开发框架）
+		(2) npm install -g express-generator(创建一个hello world的应用程序)
+
+2. 创建一个工程()
+		(1) express myapp（创建出来的是jade模板）
+			express  -e  myapp (ejs模板)
+		(2)cd myapp && npm install（下载很多包）
+		(3) npm start (在package.json 以及创建了这个脚本了)
+		(4) 修改即重启node服务， 在package.json 改成node-dev
+
 ### 初步了解express 
   1. /bin/www 文件是入口文件
   2. app.js 类似于中间转接站，二级路由，将routes内的各个路由js文件再路由一次
