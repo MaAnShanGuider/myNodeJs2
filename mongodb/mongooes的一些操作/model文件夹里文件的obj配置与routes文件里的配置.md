@@ -1,6 +1,7 @@
 ### 这两个文件里的配置必须保持一致。
-#####eg:
+##### eg:
 	model/user.js代码如下：
+```
 			var mongoose = require('mongoose');
 			var Schema = mongoose.Schema;
 			var obj = {
@@ -10,8 +11,10 @@
 			}
 			var model = mongoose.model('user',new Schema(obj));
 			module.exports = model;
+```
 
 	routes/register.js代码如下：
+```
 			var express = require('express');
 			var router = express.Router();
 			var User = require('../model/user');
@@ -40,4 +43,5 @@
 				
 			})
 			module.exports = router;
+```
 **a段代码与b段代码里的对象的属性名必须是一致的。
